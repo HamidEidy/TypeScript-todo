@@ -1,5 +1,6 @@
 import { TodoInterface } from "../Interfaces/TodoInterface";
 import UI from "./UI";
+import Swal from "sweetalert2";
 class Store {
     static getTodos(): TodoInterface[] {
         let todos: TodoInterface[];
@@ -19,6 +20,7 @@ class Store {
     static addTodo(todo: TodoInterface) {
         const todos = Store.getTodos();
         todos.push(todo);
+ 
         localStorage.setItem("todos", JSON.stringify(todos));
     }
 
@@ -34,6 +36,15 @@ class Store {
         const newTodos = todos.map((todo) => todo.id === id ? { ...todo, status: !todo.status } : todo);
 
         localStorage.setItem("todos", JSON.stringify(newTodos));
+        Swal.fire({
+            title: "Status Todo changed",
+            icon: "success",
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 3000,
+            toast: true,
+            position: 'top',
+        })
     }
 }
 
