@@ -5,6 +5,7 @@ import { TodoInterface } from "./Interfaces/TodoInterface";
 const form = document.getElementById('todo-form') as HTMLFormElement;
 const title = document.getElementById('title') as HTMLInputElement;
 const titleError = document.getElementById('title-error') as HTMLParagraphElement;
+import Swal from "sweetalert2";
 const ui = new UI()
 form.addEventListener('submit', (e: Event) => {
     e.preventDefault()
@@ -23,7 +24,16 @@ form.addEventListener('submit', (e: Event) => {
 
         ui.addTodoToList(todo)
         Store.addTodo(todo)
-        title.value = ''
+        title.value = '';
+        Swal.fire({
+            title: "Add New Todo",
+            icon: "success",
+            showConfirmButton: false,
+            timerProgressBar: true,
+            timer: 3000,
+            toast: true,
+            position: 'top',
+        })
 
     }
 

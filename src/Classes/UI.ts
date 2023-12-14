@@ -17,15 +17,6 @@ class UI {
                             `;
 
         list.appendChild(tr);
-        Swal.fire({
-            title: "Add New Todo",
-            icon: "success",
-            showConfirmButton: false,
-            timerProgressBar: true,
-            timer: 3000,
-            toast: true,
-            position: 'top',
-        })
     }
 
 
